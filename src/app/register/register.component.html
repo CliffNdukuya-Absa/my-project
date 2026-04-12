@@ -1,0 +1,43 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <h2>Register</h2>
+
+  <div>
+    <label for="username">Username</label>
+    <input id="username" type="text" formControlName="username" />
+    <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+      <small *ngIf="registerForm.get('username')?.errors?.['required']">Username is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+      <small *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</small>
+      <small *ngIf="registerForm.get('email')?.errors?.['email']">Enter a valid email.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password" />
+    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+      <small *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</small>
+      <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Minimum 6 characters.</small>
+    </div>
+  </div>
+
+    <div>
+    <label for="displayName">Display Name</label>
+    <input id="displayName" type="text" formControlName="displayName" />
+    <div *ngIf="registerForm.get('displayName')?.invalid && registerForm.get('displayName')?.touched">
+      <small *ngIf="registerForm.get('displayName')?.errors?.['required']">Display Name is required.</small>
+      <small *ngIf="registerForm.get('displayName')?.errors?.['pattern']">Only alphanumeric characters are allowed.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+
+  <div *ngIf="successMessage"><small>{{ successMessage }}</small></div>
+  <div *ngIf="errorMessage"><small>{{ errorMessage }}</small></div>
+</form>
