@@ -1,11 +1,60 @@
-<div>
-  <p>homepage works!</p>
-  <div style="display: flex">
-    <div style="margin-right: 20px">
-      <button (click)="goToLogin()">Login</button>
-    </div>
-    <div style="margin-right: 20px">
-      <button (click)="goToRegister()">Register</button>
+<!-- Hero Section -->
+<section class="hero d-flex align-items-center">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="display-4 fw-bold text-navy">Study Smarter,<br>Achieve More.</h1>
+        <p class="lead mt-3 text-muted">
+          AchieveMore helps students organise notes, practise with quizzes,
+          and track their progress — all in one place.
+        </p>
+        <div class="mt-4 d-flex gap-3 justify-content-center justify-content-lg-start">
+          <button class="btn btn-navy btn-lg px-4" (click)="goToRegister()">Get Started</button>
+          <button class="btn btn-outline-navy btn-lg px-4" (click)="goToLogin()">Login</button>
+        </div>
+      </div>
+
+      <div class="col-lg-6 d-flex justify-content-center">
+        <div class="illustration-wrapper">
+          <img src="assets/student-studying.svg" alt="Student studying with books" width="380" height="380" />
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
+</section>
+
+<!-- Features Section 
+<section class="features py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold text-navy mb-5">Everything you need to ace your exams</h2>
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="feature-card card h-100 border-0 shadow-sm text-center p-4">
+          <div class="feature-icon mx-auto mb-3">&#128218;</div>
+          <h5 class="fw-bold">Smart Notes</h5>
+          <p class="text-muted">Organise your study material by subject and topic for quick revision.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card card h-100 border-0 shadow-sm text-center p-4">
+          <div class="feature-icon mx-auto mb-3">&#9997;&#65039;</div>
+          <h5 class="fw-bold">Practice Quizzes</h5>
+          <p class="text-muted">Test yourself with auto-generated quizzes tailored to your syllabus.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card card h-100 border-0 shadow-sm text-center p-4">
+          <div class="feature-icon mx-auto mb-3">&#128200;</div>
+          <h5 class="fw-bold">Progress Tracking</h5>
+          <p class="text-muted">Monitor your improvement over time and stay on top of your goals.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+--->

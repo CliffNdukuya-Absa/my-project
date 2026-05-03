@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 360" width="360" height="360" aria-label="Person joining a study group">
+
+  <!-- Background glow circle -->
+  <circle cx="200" cy="185" r="150" fill="rgba(0,0,128,0.06)"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="318" rx="130" ry="12" fill="#000080" opacity="0.12"/>
+
+  <!-- ── Person 1 (left) ── -->
+  <!-- Body -->
+  <rect x="72" y="210" width="52" height="60" rx="16" fill="#2255a4"/>
+  <!-- Neck -->
+  <rect x="90" y="198" width="14" height="16" rx="5" fill="#f5c5a3"/>
+  <!-- Head -->
+  <ellipse cx="97" cy="182" rx="28" ry="30" fill="#f5c5a3"/>
+  <!-- Hair -->
+  <ellipse cx="97" cy="158" rx="28" ry="13" fill="#1a0a00"/>
+  <!-- Eyes -->
+  <circle cx="89" cy="180" r="3.5" fill="#2c1a00"/>
+  <circle cx="105" cy="180" r="3.5" fill="#2c1a00"/>
+  <!-- Smile -->
+  <path d="M90 192 Q97 198 104 192" stroke="#c0804a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Arm waving toward center -->
+  <path d="M124 225 Q150 210 168 220" stroke="#2255a4" stroke-width="14" stroke-linecap="round" fill="none"/>
+
+  <!-- ── Person 3 (right) ── -->
+  <!-- Body -->
+  <rect x="276" y="210" width="52" height="60" rx="16" fill="#3370cc"/>
+  <!-- Neck -->
+  <rect x="294" y="198" width="14" height="16" rx="5" fill="#f5c5a3"/>
+  <!-- Head -->
+  <ellipse cx="301" cy="182" rx="28" ry="30" fill="#f5c5a3"/>
+  <!-- Hair -->
+  <ellipse cx="301" cy="156" rx="28" ry="15" fill="#3e2000"/>
+  <ellipse cx="274" cy="168" rx="10" ry="17" fill="#3e2000"/>
+  <ellipse cx="328" cy="168" rx="10" ry="17" fill="#3e2000"/>
+  <!-- Eyes -->
+  <circle cx="293" cy="180" r="3.5" fill="#2c1a00"/>
+  <circle cx="309" cy="180" r="3.5" fill="#2c1a00"/>
+  <!-- Smile -->
+  <path d="M294 192 Q301 198 308 192" stroke="#c0804a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Arm waving toward center -->
+  <path d="M276 225 Q252 210 234 220" stroke="#3370cc" stroke-width="14" stroke-linecap="round" fill="none"/>
+
+  <!-- ── Center person (new member) ── -->
+  <!-- Body -->
+  <rect x="172" y="205" width="56" height="68" rx="18" fill="#000080"/>
+  <!-- Neck -->
+  <rect x="187" y="192" width="14" height="18" rx="5" fill="#f5c5a3"/>
+  <!-- Head -->
+  <ellipse cx="194" cy="173" rx="32" ry="34" fill="#f5c5a3"/>
+  <!-- Hair -->
+  <ellipse cx="194" cy="146" rx="32" ry="14" fill="#2c1a00"/>
+  <!-- Eyes (wide / excited) -->
+  <ellipse cx="184" cy="171" rx="5" ry="6" fill="#fff"/>
+  <ellipse cx="204" cy="171" rx="5" ry="6" fill="#fff"/>
+  <circle cx="185" cy="173" r="3" fill="#2c1a00"/>
+  <circle cx="205" cy="173" r="3" fill="#2c1a00"/>
+  <circle cx="187" cy="171" r="1" fill="#fff"/>
+  <circle cx="207" cy="171" r="1" fill="#fff"/>
+  <!-- Big smile -->
+  <path d="M182 185 Q194 196 206 185" stroke="#c0804a" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Arms out welcoming -->
+  <path d="M172 228 Q148 238 130 228" stroke="#000080" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M228 228 Q252 238 270 228" stroke="#000080" stroke-width="14" stroke-linecap="round" fill="none"/>
+
+  <!-- Plus / join badge -->
+  <circle cx="194" cy="120" r="18" fill="#fdd835"/>
+  <line x1="194" y1="109" x2="194" y2="131" stroke="#000080" stroke-width="4" stroke-linecap="round"/>
+  <line x1="183" y1="120" x2="205" y2="120" stroke="#000080" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Stars -->
+  <text x="44" y="130" font-size="20" fill="#fdd835">&#9733;</text>
+  <text x="336" y="110" font-size="16" fill="#fdd835">&#9733;</text>
+  <text x="52" y="260" font-size="13" fill="#3370cc">&#9733;</text>
+  <text x="334" y="260" font-size="13" fill="#000080">&#9733;</text>
+
+  <!-- "Join us!" text bubble -->
+  <rect x="130" y="44" width="128" height="34" rx="10" fill="#000080"/>
+  <polygon points="178,78 190,94 202,78" fill="#000080"/>
+  <text x="152" y="66" font-size="13" fill="#ffffff" font-weight="bold">Join us today!</text>
+</svg>

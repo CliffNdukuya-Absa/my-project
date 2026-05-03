@@ -1,0 +1,104 @@
+$navy: #000080;
+
+.text-navy { color: $navy; }
+
+.btn-navy {
+  background-color: $navy;
+  border-color: $navy;
+  color: #fff;
+  white-space: nowrap;
+  &:hover {
+    background-color: darken($navy, 8%);
+    color: #fff;
+  }
+}
+
+.page-header {
+  background: linear-gradient(135deg, $navy 0%, #1a3a6b 100%);
+  color: #fff;
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: $navy;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+// ── Subject selection cards (step 1) ─────────────
+.subject-card {
+  position: relative;
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+  padding: 16px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, transform 0.15s;
+  background: #fff;
+
+  .subject-icon {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+  }
+
+  .subject-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .check-mark {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: $navy;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  &:hover {
+    border-color: $navy;
+    transform: translateY(-2px);
+  }
+
+  &.selected {
+    border-color: $navy;
+    background-color: rgba(0, 0, 128, 0.06);
+  }
+}
+
+// ── Active subject cards (step 2) ────────────────
+.active-card {
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+  padding: 16px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, transform 0.15s;
+  background: #fff;
+
+  .subject-icon { font-size: 1.8rem; margin-bottom: 6px; }
+  .subject-name { font-size: 0.82rem; font-weight: 600; color: #333; }
+
+  &:hover { border-color: $navy; transform: translateY(-2px); }
+
+  &.active {
+    border-color: $navy;
+    background-color: $navy;
+    .subject-name { color: #fff; }
+  }
+}
+
+// ── Explore banner ───────────────────────────────
+.explore-banner {
+  border-radius: 12px;
+  border: 2px solid $navy;
+  background-color: rgba(0, 0, 128, 0.04);
+}

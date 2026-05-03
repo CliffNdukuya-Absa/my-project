@@ -1,0 +1,124 @@
+<!-- Header -->
+<div class="page-header">
+  <div class="container py-4">
+    <h2 class="fw-bold mb-0">Hi, {{ displayName }}! What are you studying?</h2>
+    <p class="mb-0 text-white-50">Select your subjects, then pick one to start exploring.</p>
+  </div>
+</div>
+
+<div class="container py-4">
+
+  <!-- Saved subjects view -->
+  <ng-container *ngIf="hasSavedSubjects; else pickSubjects">
+    <h5 class="fw-bold text-navy mb-3">Your Subjects</h5>
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-sm-4 col-md-3" *ngFor="let subject of subjects">
+        <div
+          *ngIf="isSelected(subject.name)"
+          class="active-card"
+          [class.active]="activeSubject === subject.name"
+          (click)="setActive(subject.name)"
+        >
+          <div class="subject-icon" [innerHTML]="subject.icon"></div>
+          <div class="subject-name">{{ subject.name }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add subjects toggle -->
+    <button class="btn btn-outline-navy mb-4" (click)="showAddSubjects = !showAddSubjects">
+      {{ showAddSubjects ? 'Done' : '+ Add Subjects' }}
+    </button>
+
+    <ng-container *ngIf="showAddSubjects">
+      <h5 class="fw-bold text-navy mb-3">Add more subjects</h5>
+      <div class="row g-3 mb-5">
+        <div class="col-6 col-sm-4 col-md-3" *ngFor="let subject of subjects">
+          <div
+            class="subject-card"
+            [class.selected]="isSelected(subject.name)"
+            (click)="toggleSubject(subject.name)"
+          >
+            <div class="subject-icon" [innerHTML]="subject.icon"></div>
+            <div class="subject-name">{{ subject.name }}</div>
+            <div class="check-mark" *ngIf="isSelected(subject.name)">&#10003;</div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <!-- No saved subjects: pick from scratch -->
+  <ng-template #pickSubjects>
+    <h5 class="fw-bold text-navy mb-3">
+      <span class="step-badge">1</span> Choose your subjects
+    </h5>
+    <p class="text-muted mb-3">Select all subjects you are studying this year.</p>
+    <div class="row g-3 mb-5" *ngIf="selectedSubjects.size === 0">
+      <div class="col-6 col-sm-4 col-md-3" *ngFor="let subject of subjects">
+        <div
+          class="subject-card"
+          [class.selected]="isSelected(subject.name)"
+          (click)="toggleSubject(subject.name)"
+        >
+          <div class="subject-icon" [innerHTML]="subject.icon"></div>
+          <div class="subject-name">{{ subject.name }}</div>
+          <div class="check-mark" *ngIf="isSelected(subject.name)">&#10003;</div>
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="selectedSubjects.size > 0">
+      <p class="text-muted mb-2">Selected: <strong>{{ selectedSubjects.size }}</strong> subject(s).</p>
+      <button class="btn btn-outline-navy mb-4" (click)="showAddSubjects = !showAddSubjects">
+        {{ showAddSubjects ? 'Done' : '+ Add Subjects' }}
+      </button>
+      <ng-container *ngIf="showAddSubjects">
+        <div class="row g-3 mb-5">
+          <div class="col-6 col-sm-4 col-md-3" *ngFor="let subject of subjects">
+            <div
+              class="subject-card"
+              [class.selected]="isSelected(subject.name)"
+              (click)="toggleSubject(subject.name)"
+            >
+              <div class="subject-icon" [innerHTML]="subject.icon"></div>
+              <div class="subject-name">{{ subject.name }}</div>
+              <div class="check-mark" *ngIf="isSelected(subject.name)">&#10003;</div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-template>
+
+  <!-- Selected subjects display -->
+  <ng-container *ngIf="hasSavedSubjects && !(selectedSubjects.size > 0)">
+    <h5 class="fw-bold text-navy mb-3">
+      <span class="step-badge">{{ hasSavedSubjects ? '2' : '2' }}</span> What would you like to study now?
+    </h5>
+    <p class="text-muted mb-3">Pick one subject to explore today.</p>
+
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-sm-4 col-md-3" *ngFor="let subject of subjects">
+          <div
+            class="subject-card"
+            [class.selected]="isSelected(subject.name)"
+            (click)="toggleSubject(subject.name)"
+          >
+            <div class="subject-icon" [innerHTML]="subject.icon"></div>
+            <div class="subject-name">{{ subject.name }}</div>
+            <div class="check-mark" *ngIf="isSelected(subject.name)">&#10003;</div>
+          </div>
+      </div>
+    </div>
+
+    <div *ngIf="activeSubject" class="explore-banner d-flex align-items-center gap-3 p-4">
+      <span style="font-size:2rem">&#128218;</span>
+      <div>
+        <div class="fw-bold text-navy" style="font-size:1.1rem">{{ activeSubject }}</div>
+        <div class="text-muted">Ready to explore {{ activeSubject }}. Notes and quizzes coming soon.</div>
+      </div>
+      <button class="btn btn-navy ms-auto">Let's Go</button>
+    </div>
+  </ng-container>
+
+</div>

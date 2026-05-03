@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,9 @@ export class LoginComponent {
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.loginForm = this.fb.group({
-      usernameOrEmail: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -25,10 +26,12 @@ export class LoginComponent {
             this.errorMessage = null;
       this.successMessage = null;
       console.log(this.loginForm.value);
-      this.http.post('/api/v1/auth/login', this.loginForm.value).subscribe({
-        next: () => {
-          this.successMessage = 'Login successful!';
-          this.loginForm.reset();
+      this.http.post<{ user: { name: string; surname: string; email: string }; token: string }>('/users/login', this.loginForm.value).subscribe({
+        next: (res) => {
+          localStorage.setItem('displayName', `${res.user.name} ${res.user.surname}`);
+          localStorage.setItem('userEmail', res.user.email);
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['/dashboard']);
         },
         error: (err) => {
           this.errorMessage = err.error?.message ?? 'Login failed. Please try again.';

@@ -1,0 +1,36 @@
+$navy: #000080;
+
+.auth-page {
+  background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+}
+
+.auth-card {
+  max-width: 860px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.auth-illustration-panel {
+  background-color: rgba(0, 0, 128, 0.07);
+  border-right: 1px solid rgba(0, 0, 128, 0.1);
+  padding: 2rem;
+}
+
+.auth-illustration {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn-primary {
+  background-color: $navy;
+  border-color: $navy;
+
+  &:hover {
+    background-color: darken($navy, 8%);
+    border-color: darken($navy, 8%);
+  }
+}
+
+a {
+  color: $navy;
+}

@@ -1,0 +1,10 @@
+.navbar {
+  background-color: navy;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link.active {
+  font-weight: 600;
+  color: rgb(255, 255, 255) !important;
+  border-bottom: 2px solid #fff;
+}

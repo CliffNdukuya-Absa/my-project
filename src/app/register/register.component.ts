@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,12 +13,12 @@ export class RegisterComponent {
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      displayName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]]
+      surname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]]
     });
   }
 
@@ -26,10 +27,12 @@ export class RegisterComponent {
       this.errorMessage = null;
       this.successMessage = null;
       console.log(this.registerForm.value);
-      this.http.post('/register', this.registerForm.value).subscribe({
-        next: () => {
-          this.successMessage = 'Registration successful!';
-          this.registerForm.reset();
+      this.http.post<{ user: { name: string; surname: string; email: string }; token: string }>('/users/register', this.registerForm.value).subscribe({
+        next: (res) => {
+          localStorage.setItem('displayName', `${res.user.name} ${res.user.surname}`);
+          localStorage.setItem('userEmail', res.user.email);
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['/dashboard']);
         },
         error: (err) => {
           this.errorMessage = err.error?.message ?? 'Registration failed. Please try again.';
