@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  @ViewChild('bgAudio') bgAudio!: ElementRef<HTMLAudioElement>;
+  audioUrl = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
   loginForm: FormGroup;
   errorMessage: string | null = null;
   successMessage: string | null = null;
@@ -18,6 +20,25 @@ export class LoginComponent {
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+  }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      const audio = this.bgAudio?.nativeElement;
+      if (!audio) return;
+      const fadeDuration = 3000;
+      const interval = 50;
+      const step = audio.volume / (fadeDuration / interval);
+      const fade = setInterval(() => {
+        if (audio.volume > step) {
+          audio.volume = Math.max(0, audio.volume - step);
+        } else {
+          audio.volume = 0;
+          audio.pause();
+          clearInterval(fade);
+        }
+      }, interval);
+    }, 5000);
   }
 
   onSubmit(): void {
