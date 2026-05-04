@@ -12,7 +12,7 @@ export class RegisterComponent {
   registerForm: FormGroup;
   errorMessage: string | null = null;
   successMessage: string | null = null;
-
+  audioUrl = 'assets/airwoosh.wav';
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],

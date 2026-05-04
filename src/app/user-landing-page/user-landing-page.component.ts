@@ -8,9 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-landing-page.component.scss']
 })
 export class UserLandingPageComponent implements OnInit {
-  @ViewChild('bgAudio') bgAudio!: ElementRef<HTMLAudioElement>;
   displayName = localStorage.getItem('displayName') ?? 'Student';
-  audioUrl = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3';
+  audioUrl = 'assets/airwoosh.wav';
 
   subjects = [
     { name: 'Mathematics',        icon: '&#10010;' },
@@ -35,23 +34,6 @@ export class UserLandingPageComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      const audio = this.bgAudio?.nativeElement;
-      if (!audio) return;
-      const fadeDuration = 3000;
-      const interval = 50;
-      const step = audio.volume / (fadeDuration / interval);
-      const fade = setInterval(() => {
-        if (audio.volume > step) {
-          audio.volume = Math.max(0, audio.volume - step);
-        } else {
-          audio.volume = 0;
-          audio.pause();
-          clearInterval(fade);
-        }
-      }, interval);
-    }, 5000);
-
     const email = localStorage.getItem('userEmail');
     const token = localStorage.getItem('token');
     if (!email || !token) return;

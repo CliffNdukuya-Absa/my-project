@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SubjectContentComponent implements OnInit {
   subjectName: string = '';
-
+  audioUrl = 'assets/airwoosh.wav';
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {

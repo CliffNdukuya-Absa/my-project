@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./about-us.component.scss']
 })
 export class AboutUsComponent {
-
+audioUrl = 'assets/airwoosh.wav';
 }
